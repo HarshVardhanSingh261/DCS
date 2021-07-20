@@ -18,7 +18,7 @@ polynomial is CRC16 (x16 + x15 + x2 + 1). We initialize the register to 16’hff
 ensure that leading 0s in front of a packet are protected by the CRC. All the
 registers are clocked with common clock</p>
 
-<img src="img/img1.png" style="transform:scale(0.5,0.5)"/>
+<img src="img/img1.png" width="550px"/>
 
 <p><b>FEC:</b> Forward Error Correction (FEC) code is a system of adding redundant data, or
 parity data, to a message, such that it can be recovered by a receiver even when a
@@ -44,7 +44,7 @@ thus doubling the amount of data that must be transmitted.
 -gi is the K-element generator for parity bit pi.
 g0 = 1,1,1,1 and g1 = 1,1,0,1. The parity bits are then</p>
 
-<img src="img/img2.png" style="transform:scale(0.5,0.5)">
+<img src="img/img2.png" width="350px" height="150px">
 
 <p><b>Interleaver:</b> In many situations errors come in bursts: correlated multi-bit errors
 (e.g., fading or burst of interference on wireless channels, damage to storage media
@@ -56,14 +56,14 @@ at the LSB end) are transmitted followed by the next set of bit pairs until all 
 transmitted. This is implemented in many satellite communication systems.
 </p>
 
-<img src="img/img3.png" style="transform:scale(0.5,0.5)">
-<img src="img/img4.png" style="transform:scale(0.5,0.5)">
+<img src="img/img3.png" width="550px">
+<img src="img/img4.png" width="550px">
 
 <p>The final task is to establish a communication system with these modules.
 The complete process, in serial mode, requires a 32 clock cycle to calculate the CRC
 followed by 48 clock cycles for the convolution encoder totaling 80 clock cycles.</p>
 
-<img src="img/img5.png" style="transform:scale(0.5,0.5)">
+<img src="img/img5.png" width="550px">
 
 <p>But notice that the CRC result is not required while the convolution encoder is
 processing the first four bytes of data. So we will send the first 4 bytes of data to
@@ -74,4 +74,4 @@ convolution encoding takes 32 cycles and 16 more clock cycles to complete
 convolution encoding. By taking advantage of concurrent processing total processing
 is reduced from 80 clock cycles to 48 clock cycles.</p>
 
-<img src="img/img6.png" style="transform:scale(0.5,0.5)">
+<img src="img/img6.png" width="550px">
